@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 const Main = () => {
-  return (
-    <div>Main</div>
-  )
-}
+  const [state, setState] = useState(false);
 
-export default Main
+  const handleClick = () => {
+    setState((сurrentValue) => !сurrentValue);
+
+  }
+    return (
+      <div>
+        <h1>What is React ?</h1>
+        <button onClick={handleClick}>{state ? 'Hidden' : 'Show'}</button>
+        {state && <div>A JavaScript library</div>}
+      </div>
+    );
+  }
+
+export default Main;
