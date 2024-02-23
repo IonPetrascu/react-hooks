@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { ThemeContext } from './themeContext';
+import Component from './Component';
 
 const Main = () => {
-  return (
-    <div>Main</div>
-  )
-}
+  const [theme, setTheme] = useState(true);
 
-export default Main
+  const toggleTheme = () => {
+    setTheme(prev => prev ? false : true);
+    console.log(theme);
+  };
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <Component />
+      <button onClick={toggleTheme}>Change theme</button>
+    </ThemeContext.Provider>
+  );
+};
+
+export default Main;
