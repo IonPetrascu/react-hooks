@@ -1,9 +1,19 @@
-import React from 'react'
-
+import React, { useCallback, useState } from 'react';
+import Button from './Button';
 const Main = () => {
-  return (
-    <div>Main</div>
-  )
-}
+  const [visible, setVisibility] = useState(false);
 
-export default Main
+  const handleClick = useCallback(() => {
+    setVisibility((currentValue) => !currentValue);
+  }, [setVisibility]);
+
+  return (
+    <div>
+      <h1>What is React?</h1>
+      <Button onCLick={handleClick}>Toggle</Button>
+      {visible && <div>A JavaScript library for building user interfaces</div>}
+    </div>
+  );
+};
+
+export default Main;
